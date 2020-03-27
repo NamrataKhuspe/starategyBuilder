@@ -1,0 +1,74 @@
+<!-- <p>strategy-get-started-component works!</p> -->
+
+<div style="background-color: white; margin: 50px;display: center;height: 450px;padding: 10px">
+    <div class="custom-select fa-caret-down" style="width: 300px;background: white;margin: 10px;margin-top: 10px;">
+        <select name="demo" id="#" class="form-control">
+            <option *ngFor="let ref of getStockData" [value]="ref.stock_data">{{ref.stock_data}}</option>
+        </select>
+    </div>
+    <div class="btn-group" style="padding: 10px;">
+        <button type="button" class="btn btn-default" style="background-color: #b2dfdb !important;margin-right: 10px !important;width: 150px;
+        height: 36px;">Spot Price: 8541.5</button>
+        <button type="button" class="btn btn-default" style="background-color: #ffe0b2 !important ;margin-right: 10px !important;width: 157px;
+        height: 36px;">Future Price: 8436</button>
+        <button type="button" class="btn btn-default" style="background-color: #dcedc8 !important;margin-right: 10px !important;width: 157px;
+        height: 36px;">Lot Size: 53</button>
+
+        <button type="button" class="btn btn-default" style="background-color: #f0f4c3 !important;margin-right: 10px !important;width: 150px;
+height: 36px;">IV: 86.8</button>
+        <button type="button" class="btn btn-default" style="background-color: #e1bee7 !important ;margin-right: 10px !important;width: 157px;
+height: 36px;">IV Percentile: 84.36</button>
+        <button type="button" class="btn btn-default" style="background-color: #cfd8dc !important;margin-right: 10px !important;width: 157px;
+height: 36px;"><u><a href="http://www.google.com">NIFTY IV CHART</a></u></button>
+
+        <div>
+            <label for="date">Date</label>
+        </div>
+        <div>
+            <input aria-label="Date" type="text">
+            Select Pay-off Date
+        </div>
+    </div>
+    <div>
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="dropdown" style="width: 300px;background: white;margin: 10px;margin-top: 10px;">
+            <select name="demo" id="#" class="form-control">
+                <option [value]="" selected>Futures</option>
+                <option [value]="">Options</option>
+
+            </select>
+            <label style="color: rgba(0,0,0,.54)"> Select segment </label>
+        </div>
+
+        <div class="dropdown" style="width: 300px;background: white;margin: 10px;margin-top: 10px;">
+            <select name="demo" id="#" class="form-control">
+                <!-- <option [value]="" selected>select Expiry</option> -->
+                <option [value]="" selected>19Mar2020</option>
+                <option [value]="">19Mar2020</option>
+                <option [value]="">19Mar2020</option>
+                <option [value]="">19Mar2020</option>
+                <option [value]="">19Mar2020</option>
+
+
+            </select>
+            <label style="color: rgba(0,0,0,.54)"> select Expiry </label>
+        </div>
+
+    </div>
+    <div style="padding: 10px">
+
+        <input type="radio" id="buy" name="buysell" value="buy" style="margin-right: -3; border: 0px;
+        width: 1.5%;
+        height: 2em;">
+        <label for="buy" style=" margin-right: 20px;"> Buy </label>
+        <input type="radio" id="sell" name="buysell" value="sell" style="margin-right: -3; border: 0px;
+        width: 1.5%;
+        height: 2em;">
+        <label for="sell" style=" margin-right: 30px;"> Sell </label>
+        <div data-v-607416cd="" data-v-96dd408c="" class="number-input number-input--inline number-input--center number-input--controls"><button data-v-607416cd="" type="button" class="number-input__button number-input__button--minus"></button> <input data-v-607416cd="" type="number" min="1" max="1000" step="1" autocomplete="off" class="number-input__input"> <button data-v-607416cd="" type="button" class="number-input__button number-input__button--plus"></button></div>
+    </div>
+    <!-- <input data-v-607416cd="" type="number" min="1" max="1000" step="1" autocomplete="off" class="number-input__input"> -->
+</div>
