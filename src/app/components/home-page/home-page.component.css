@@ -1,0 +1,27 @@
+body {
+    padding-top: 5rem;
+  }
+  .starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  
+  .v-toolbar__title:not(:first-child) {
+    margin-left: 20px;
+}
+.v-toolbar__title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+
+
+@media screen and (min-width: 425px) {
+  /* .starter-template {
+    text-align: end;
+  } */
+}

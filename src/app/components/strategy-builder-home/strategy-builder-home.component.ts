@@ -19,4 +19,7 @@ export class StrategyBuilderHomeComponent implements OnInit {
     this.router.navigateByUrl('getstarted');
   }
 
+  routeTo(){
+    this.router.navigate(['/home/getstarted'])
+  }
 }

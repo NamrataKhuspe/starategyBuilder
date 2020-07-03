@@ -1,74 +1,270 @@
-<!-- <p>strategy-get-started-component works!</p> -->
-
-<div style="background-color: white; margin: 50px;display: center;height: 450px;padding: 10px">
-    <div class="custom-select fa-caret-down" style="width: 300px;background: white;margin: 10px;margin-top: 10px;">
-        <select name="demo" id="#" class="form-control">
-            <option *ngFor="let ref of getStockData" [value]="ref.stock_data">{{ref.stock_data}}</option>
-        </select>
-    </div>
-    <div class="btn-group" style="padding: 10px;">
-        <button type="button" class="btn btn-default" style="background-color: #b2dfdb !important;margin-right: 10px !important;width: 150px;
-        height: 36px;">Spot Price: 8541.5</button>
-        <button type="button" class="btn btn-default" style="background-color: #ffe0b2 !important ;margin-right: 10px !important;width: 157px;
-        height: 36px;">Future Price: 8436</button>
-        <button type="button" class="btn btn-default" style="background-color: #dcedc8 !important;margin-right: 10px !important;width: 157px;
-        height: 36px;">Lot Size: 53</button>
-
-        <button type="button" class="btn btn-default" style="background-color: #f0f4c3 !important;margin-right: 10px !important;width: 150px;
-height: 36px;">IV: 86.8</button>
-        <button type="button" class="btn btn-default" style="background-color: #e1bee7 !important ;margin-right: 10px !important;width: 157px;
-height: 36px;">IV Percentile: 84.36</button>
-        <button type="button" class="btn btn-default" style="background-color: #cfd8dc !important;margin-right: 10px !important;width: 157px;
-height: 36px;"><u><a href="http://www.google.com">NIFTY IV CHART</a></u></button>
-
-        <div>
-            <label for="date">Date</label>
-        </div>
-        <div>
-            <input aria-label="Date" type="text">
-            Select Pay-off Date
-        </div>
-    </div>
-    <div>
-        <hr>
-    </div>
-
+<div class="container-fluid" style="margin-top: 75px;background-color: white;">
+    <!-- Hello! I am in a simple container. -->
     <div class="row">
-        <div class="dropdown" style="width: 300px;background: white;margin: 10px;margin-top: 10px;">
-            <select name="demo" id="#" class="form-control">
-                <option [value]="" selected>Futures</option>
-                <option [value]="">Options</option>
-
-            </select>
-            <label style="color: rgba(0,0,0,.54)"> Select segment </label>
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-4">
+            <div style="margin-top: 35px;">
+                <label>Select Index/Stock</label>
+                <ng-container *ngIf="stockArray.length>0">
+                    <ng-select  [options]="stockArray" [(ngModel)]="stockmodel">
+                    </ng-select>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto"> <button class="btn btn-primary mr-1"
+                            style="margin:10px;background-color: #b2dfdb;color: black;border-color: #b2dfdb">Spot
+                            Price:9111.9</button>
+                    </div>
+                    <div class="col-md-auto"><button class="btn btn-primary mr-1"
+                            style="margin:10px;background-color: #ffe0b2;color: black;border-color: #ffe0b2">
+                            Futures Price: 9086.7
+                        </button>
+                    </div>
+                    <div class="col-md-auto"><button class="btn btn-primary mr-1"
+                            style="margin:10px;background-color: #dcedc8;color: black;border-color: #dcedc8">
+                            Lot Size: 75
+                        </button>
+                    </div>
+                    <div class="col-md-auto"><button class="btn btn-primary mr-1"
+                            style="margin:10px;background-color: #f0f4c3;color: black;border-color: #f0f4c3">
+                            IV: 53.97
+                        </button>
+                    </div>
+                    <div class="col-md-auto"><button class="btn btn-primary mr-1"
+                            style="margin:10px;background-color: #e1bee7;color: black;border-color: #e1bee7">IV
+                            Percentile: 94.56</button>
+                    </div>
+                    <div class="col-md-auto"><button class="btn btn-primary mr-1"
+                            style="margin:10px;background-color: #cfd8dc;color: black;border-color: #cfd8dc">
+                            NIFTY IV Chart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <div class="input-group" style="margin-top: 10px;">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="datemodel"
+                                ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                    type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-auto">
+                        <label>Select Pay-off Date</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <hr style="
+                    display: block;
+                    -webkit-box-flex: 1;
+                    flex: 1 1 0px;
+                    max-width: 100%;
+                    height: 0;
+                    max-height: 0;
+                    border: solid;
+                    border-width: thin 0 0 0;
+                    transition: inherit;
+                    overflow: visible;
+                " class="v-divider theme--light">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-3">
+            <label>Select Segment</label>
+            <ng-select [options]="segmentsArray" [(ngModel)]="segmentsmodel">
+            </ng-select>
+            <!-- <input id="typeahead-focus2" type="text" class="form-control" [(ngModel)]="segmentsmodel"
+                [ngbTypeahead]="searchSegments" (focus)="focus2$.next($any($event).target.value)"
+                (click)="click2$.next($any($event).target.value)" #instance2="ngbTypeahead" /> -->
+        </div>
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-3">
+            <label>Select Expiry</label>
+            <ng-select [options]="expiryArray" [(ngModel)]="expirymodel">
+            </ng-select>
+            <!-- <input id="typeahead-focus3" type="text" class="form-control" [(ngModel)]="expirymodel"
+                [ngbTypeahead]="searchExpiry" (focus)="focus3$.next($any($event).target.value)"
+                (click)="click3$.next($any($event).target.value)" #instance3="ngbTypeahead" /> -->
         </div>
 
-        <div class="dropdown" style="width: 300px;background: white;margin: 10px;margin-top: 10px;">
-            <select name="demo" id="#" class="form-control">
-                <!-- <option [value]="" selected>select Expiry</option> -->
-                <option [value]="" selected>19Mar2020</option>
-                <option [value]="">19Mar2020</option>
-                <option [value]="">19Mar2020</option>
-                <option [value]="">19Mar2020</option>
-                <option [value]="">19Mar2020</option>
-
-
-            </select>
-            <label style="color: rgba(0,0,0,.54)"> select Expiry </label>
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-3">
+            <label>Select Options Strike</label>
+            <ng-select [options]="optionStrikeArray" [(ngModel)]="optionStrikemodel">
+            </ng-select>
+            <!-- <input id="typeahead-focus4" type="text" class="form-control" [(ngModel)]="optionStrikemodel"
+                [ngbTypeahead]="searchOptionStrike" (focus)="focus4$.next($any($event).target.value)"
+                (click)="click4$.next($any($event).target.value)" (keydown)="typeaheadKeydown($event)"   #instance4="ngbTypeahead" /> -->
         </div>
-
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-3">
+            <label>Select Option Type</label>
+            <ng-select [options]="optionTypeArray" [(ngModel)]="optionTypemodel">
+            </ng-select>
+            <!-- <input id="typeahead-focus5" type="text" class="form-control" [(ngModel)]="optionTypemodel"
+                [ngbTypeahead]="searchOptionType" (focus)="focus5$.next($any($event).target.value)"
+                (click)="click5$.next($any($event).target.value)" #instance5="ngbTypeahead" /> -->
+        </div>
     </div>
-    <div style="padding: 10px">
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="custom-control custom-radio custom-control-inline" style="margin-top: 15px;">
+                <input type="radio" class="custom-control-input" id="buy" name="stockoption" value="buy">
+                <label class="custom-control-label" for="buy">Buy</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline" style="margin-top: 15px;">
+                <input type="radio" class="custom-control-input" id="cell" name="stockoption" value="sell">
+                <label class="custom-control-label" for="sell">Sell</label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="btn-group btn-group-lg" style="margin-top: 15px;">
+                <span>Lot qty</span>
+                <span>&nbsp;&nbsp;</span>
+                <button type="button" class="btn" style="border: 1px solid black;" (click)="decrement()">-</button>
+                <button type="button" class="btn" style="border: 1px solid black;">{{lotQty}}</button>
+                <button type="button" class="btn" style="border: 1px solid black;" (click)="increment()">+</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <!-- <button type="button" style="margin-top: 15px;border: 1px solid black;" class="btn">Future Prices</button> -->
+            <button type="button" style="margin-top: 15px;border: 1px solid black;" class="btn">Option
+                Price:2927.7</button>
+            <span>&nbsp;&nbsp;</span>
+            <button type="button" style="margin-top: 15px;border: 1px solid black;" class="btn">Option IV:0</button>
 
-        <input type="radio" id="buy" name="buysell" value="buy" style="margin-right: -3; border: 0px;
-        width: 1.5%;
-        height: 2em;">
-        <label for="buy" style=" margin-right: 20px;"> Buy </label>
-        <input type="radio" id="sell" name="buysell" value="sell" style="margin-right: -3; border: 0px;
-        width: 1.5%;
-        height: 2em;">
-        <label for="sell" style=" margin-right: 30px;"> Sell </label>
-        <div data-v-607416cd="" data-v-96dd408c="" class="number-input number-input--inline number-input--center number-input--controls"><button data-v-607416cd="" type="button" class="number-input__button number-input__button--minus"></button> <input data-v-607416cd="" type="number" min="1" max="1000" step="1" autocomplete="off" class="number-input__input"> <button data-v-607416cd="" type="button" class="number-input__button number-input__button--plus"></button></div>
+        </div>
+        <div class="col-md-3">
+            <button type="button" style="margin-top: 15px;background-color: grey;" class="btn">Add Position</button>
+        </div>
     </div>
-    <!-- <input data-v-607416cd="" type="number" min="1" max="1000" step="1" autocomplete="off" class="number-input__input"> -->
+</div>
+
+<div class="container-fluid" style="margin-top: 75px;background-color: white;">
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-4">
+            <div style="margin-top: 35px;">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6" style="width: 50%;">
+                        <label style="font-weight: bold;"> Strategy Position</label>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6" style="width: 50%;">
+                        <label style="font-weight: bold;"> Strategy Position</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr style="
+                                display: block;
+                                -webkit-box-flex: 1;
+                                flex: 1 1 0px;
+                                max-width: 100%;
+                                height: 0;
+                                max-height: 0;
+                                border: solid;
+                                border-width: thin 0 0 0;
+                                transition: inherit;
+                                overflow: visible;
+                            " class="v-divider theme--light">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <label style="font-weight: bold;">
+                            +1x 30APR2020 FUTURES - ₹ 9086.7
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <button type="button" class="btn btn-outline-info">Edit</button>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <button type="button" class="btn btn-outline-success">Status</button>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <button type="button" class="btn btn-outline-primary">Success</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr style="
+                                display: block;
+                                -webkit-box-flex: 1;
+                                flex: 1 1 0px;
+                                max-width: 100%;
+                                height: 0;
+                                max-height: 0;
+                                border: solid;
+                                border-width: thin 0 0 0;
+                                transition: inherit;
+                                overflow: visible;
+                            " class="v-divider theme--light">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <div class="table-responsive-sm .table-borderless">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Prob. Of Profit</td>
+                                        <td>50.92%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prob. Of Profit</td>
+                                        <td>50.92%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prob. Of Profit</td>
+                                        <td>50.92%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prob. Of Profit</td>
+                                        <td>50.92%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prob. Of Profit</td>
+                                        <td>50.92%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prob. Of Profit</td>
+                                        <td>50.92%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8">
+            <div style="margin-top: 35px;">
+                <div>
+                    <!-- <canvas baseChart [chartType]="'line'" [datasets]="chartData" [labels]="chartLabels"
+                        [options]="chartOptions" [legend]="true" (chartClick)="onChartClick($event)">
+                    </canvas> -->
+                    <div id="payoffchartdiv" style="width: 100%; height: 400px; "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>

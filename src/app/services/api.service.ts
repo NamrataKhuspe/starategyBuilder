@@ -19,4 +19,8 @@ export class ApiService {
     console.log("in get call");
     return this.httpclient.post(this.baseUrl + url, body);
   }
+
+  externalGetCall(url:any){
+    return this.httpclient.get(url);
+  }
 }
